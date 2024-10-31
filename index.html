@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chris Chin - Senior Software Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .active {
+            font-weight: bold;
+            color: #dde5f2; /* Tailwind's blue-600 */
+        }
+
+        .nav-link-active {
+            color: #f4eae7; /* Change this color to your preferred active color */
+            font-size: large;
+        }
+
+        .extra-space {
+           padding-bottom: 700px; /* Adjust to desired space */
+        }
+
+        .mouse-circle {
+            position: fixed;
+            width: 3000px;
+            height: 3000px;
+            background: radial-gradient(circle, 
+                rgba(35, 78, 190, 0.4) 10%,    /* Initial strong color close to the center */
+                rgba(25, 55, 137, 0.2) 30%,    /* Starts fading quickly */
+                rgba(10, 17, 66, 0.1) 60%,    /* Slows the fade */
+                rgba(4, 11, 39, 0) 100%      /* Final transparent stop */
+            );
+            border-radius: 50%;
+            pointer-events: none; /* Prevents interference with other elements */
+            transform: translate(-50%, -50%); /* Centers the div on the mouse position */
+            transition: transform 0.1s ease-out; /* Smooth movement */
+            z-index: 100;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(45, 212, 191, 0.1); /* Light teal background */
+            color: #38b2ac; /* Teal text color */
+            padding: 4px 12px;
+            border-radius: 9999px; /* Fully rounded corners */
+            font-size: 0.75rem; /* Text size */
+            font-weight: 500; /* Medium font weight */
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="mouse-circle"></div>
+    <div class="flex flex-col md:flex-row h-screen">
+        <!-- Left Navigation Column -->
+        <nav id="wide-navbar" class="bg-gray-800 text-gray-400 md:w-3/5 p-5 sticky z-10 w-full">
+            <div class="mt-20 ml-10">
+                <h1 class="text-3xl font-bold mb-1 text-white">Chris, King Ho Chin</h1>
+                <h2 class="text-xl mb-2 text-white">Senior Sofware Developer</h2>
+                <p class="mt-4 mb-20">Crafting seamless, scalable, and immersive web experiences for all.</p>
+                <ul class="space-y-4" id="nav">
+                    <li><a href="#about" class="hover:text-gray-200 nav-link about-link">About</a></li>
+                    <li><a href="#experience" class="hover:text-gray-200 nav-link">Experience</a></li>
+                    <li><a href="#publications" class="hover:text-gray-200 nav-link">Publications</a></li>
+                    <li><a href="#project-highlights" class="hover:text-gray-200 nav-link">Project Highlights</a></li>
+                </ul>
+            </div>
+            <div class="mt-20 ml-10">
+                <ul class="ml-1 mt-8 flex items-center" aria-label="Social media">
+                    <li class="mr-5 text-xs shrink-0">
+                        <a class="block hover:text-slate-200" href="https://linkedin.com/in/chris-chin-80738222/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn (opens in a new tab)" title="LinkedIn">
+                            <span class="sr-only">LinkedIn</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6" aria-hidden="true">
+                                <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="mr-5 text-xs shrink-0">
+                        <a class="block hover:text-slate-200" href="https://kinghochin.github.io/" target="_blank" rel="noreferrer noopener" aria-label="GitHub (opens in a new tab)" title="GitHub">
+                            <span class="sr-only">GitHub</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="h-6 w-6" aria-hidden="true">
+                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="mr-5 text-xs shrink-0">
+                        <a class="block hover:text-slate-200" href="https://medium.com/@it.works" target="_blank" rel="noreferrer noopener" aria-label="Medium (opens in a new tab)" title="Medium">
+                            <span class="sr-only">Medium</span>
+                            <svg width="22" height="22" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" class="transparent-icon">
+                                <rect width="1024" height="1024" rx="179.649" fill="currentColor"/>
+                                <path d="M1024 704.736V797.736C1018.16 798.3 1012.16 798.588 1006 798.588C896.061 798.588 834.166 707.016 831.497 592.432C831.418 588.002 831.448 583.6 831.546 579.228C831.606 576.501 831.714 573.783 831.852 571.075C831.921 569.628 831.989 568.269 832.098 566.753C832.206 565.236 832.315 563.72 832.443 562.204C836.401 511.613 852.687 466.594 879.568 433.284C896.267 412.606 916.334 396.852 939.09 386.316C959.078 376.253 987.17 370.699 1010.07 370.699H1011.06C1015.4 370.699 1019.71 370.844 1024 371.13V396.717C1019.45 395.47 1014.58 394.801 1009.4 394.715C963.086 395.67 935.486 451.145 932.049 528.007H1024V549.669H929.972L929.942 549.689C925.703 624.579 966.692 687.87 1024 704.736Z" fill="#2D3748"/>
+                                <path d="M836.115 244.625L836.923 244.448V238.195H672.014L518.891 598.084L365.768 238.195H188.059V244.448L188.857 244.625C218.957 251.419 234.239 261.551 234.239 298.091V725.872C234.239 762.412 218.898 772.544 188.798 779.338L188 779.516V785.788H308.57V779.535L307.773 779.358C277.672 772.564 262.39 762.432 262.39 725.892V322.905L459.093 785.788H470.249L672.683 309.996V736.457C670.104 765.317 654.96 774.228 627.705 780.382L626.897 780.569V786.773H836.923V780.569L836.115 780.382C808.831 774.228 793.322 765.317 790.743 736.457L790.605 298.091H790.743C790.743 261.551 806.024 251.419 836.115 244.625Z" fill="#2D3748"/>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="mr-5 text-xs shrink-0">
+                        <a class="block hover:text-slate-200" href="https://x.com/chris_chin_kh" target="_blank" rel="noreferrer noopener" aria-label="X (opens in a new tab)" title="X">
+                            <span class="sr-only">X</span>
+                            <svg width="22" height="22" viewBox="0 0 1200 1226" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="currentColor"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="mr-5 text-xs shrink-0">
+                        <a class="block hover:text-slate-200" href="https://codepen.io/kinghochin" target="_blank" rel="noreferrer noopener" aria-label="CodePen (opens in a new tab)" title="CodePen">
+                            <span class="sr-only">CodePen</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" aria-hidden="true">
+                                <path d="M3.06 41.732L32 60.932l28.94-19.2V22.268L32 3.068l-28.94 19.2zm57.878 0L32 22.268 3.06 41.732m0-19.463L32 41.47l28.94-19.2M32 3.068v19.2m0 19.463v19.2" stroke-width="5"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="mr-5 text-xs shrink-0">
+                        <a class="block hover:text-slate-200" href="https://bento.me/chrischin" target="_blank" rel="noreferrer noopener" aria-label="Personal Details (opens in a new tab)" title="Personal Details">
+                            <span class="sr-only">Personal Details</span>
+                            <svg width="24" height="24" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" class="transparent-icon">
+                                <defs>
+                                    <mask id="cutout">
+                                        <rect width="1024" height="1024" fill="white" />
+                                        <g fill="black">
+                                            <!-- User icon path -->
+                                            <path d="M512 0C229.1 0 0 229.1 0 512s229.1 512 512 512 512-229.1 512-512S794.9 0 512 0zm0 128c70.7 0 128 57.3 128 128s-57.3 128-128 128-128-57.3-128-128 57.3-128 128-128zm0 768c-119.3 0-220.7-68.5-270.6-170.7 25.1-58.4 80.4-97.5 142.4-97.5h256c62 0 117.3 39.1 142.4 97.5C732.7 827.5 630.3 896 512 896z" />
+                                        </g>
+                                    </mask>
+                                </defs>
+                                <rect width="1024" height="1024" rx="179.649" fill="#2D3748" mask="url(#cutout)" />
+                                <g fill="#A0AEC0"> <!-- Gray color -->
+                                    <path d="M512 0C229.1 0 0 229.1 0 512s229.1 512 512 512 512-229.1 512-512S794.9 0 512 0zm0 128c70.7 0 128 57.3 128 128s-57.3 128-128 128-128-57.3-128-128 57.3-128 128-128zm0 768c-119.3 0-220.7-68.5-270.6-170.7 25.1-58.4 80.4-97.5 142.4-97.5h256c62 0 117.3 39.1 142.4 97.5C732.7 827.5 630.3 896 512 896z" />
+                                </g>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="narrow-navbar" class="w-screen bg-gray-800 text-gray-400 p-5 relative z-10">
+            <nav class="w-screen">
+                <div class="container flex flex-row items-start">
+                    <div class="w-1/2">
+                        <h1 class="text-2xl font-bold text-white">Chris, King Ho Chin</h1>
+                    </div>
+                    <div class="w-1/2">
+                        <ul class="ml-1 mt-2 flex items-center" aria-label="Social media">
+                            <li class="mr-5 text-xs shrink-0">
+                                <a class="block hover:text-slate-200" href="https://linkedin.com/in/chris-chin-80738222/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn (opens in a new tab)" title="LinkedIn">
+                                    <span class="sr-only">LinkedIn</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-6 w-6" aria-hidden="true">
+                                        <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="mr-5 text-xs shrink-0">
+                                <a class="block hover:text-slate-200" href="https://kinghochin.github.io/" target="_blank" rel="noreferrer noopener" aria-label="GitHub (opens in a new tab)" title="GitHub">
+                                    <span class="sr-only">GitHub</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="h-6 w-6" aria-hidden="true">
+                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="mr-5 text-xs shrink-0">
+                                <a class="block hover:text-slate-200" href="https://medium.com/@it.works" target="_blank" rel="noreferrer noopener" aria-label="Medium (opens in a new tab)" title="Medium">
+                                    <span class="sr-only">Medium</span>
+                                    <svg width="22" height="22" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" class="transparent-icon">
+                                        <rect width="1024" height="1024" rx="179.649" fill="currentColor"/>
+                                        <path d="M1024 704.736V797.736C1018.16 798.3 1012.16 798.588 1006 798.588C896.061 798.588 834.166 707.016 831.497 592.432C831.418 588.002 831.448 583.6 831.546 579.228C831.606 576.501 831.714 573.783 831.852 571.075C831.921 569.628 831.989 568.269 832.098 566.753C832.206 565.236 832.315 563.72 832.443 562.204C836.401 511.613 852.687 466.594 879.568 433.284C896.267 412.606 916.334 396.852 939.09 386.316C959.078 376.253 987.17 370.699 1010.07 370.699H1011.06C1015.4 370.699 1019.71 370.844 1024 371.13V396.717C1019.45 395.47 1014.58 394.801 1009.4 394.715C963.086 395.67 935.486 451.145 932.049 528.007H1024V549.669H929.972L929.942 549.689C925.703 624.579 966.692 687.87 1024 704.736Z" fill="#2D3748"/>
+                                        <path d="M836.115 244.625L836.923 244.448V238.195H672.014L518.891 598.084L365.768 238.195H188.059V244.448L188.857 244.625C218.957 251.419 234.239 261.551 234.239 298.091V725.872C234.239 762.412 218.898 772.544 188.798 779.338L188 779.516V785.788H308.57V779.535L307.773 779.358C277.672 772.564 262.39 762.432 262.39 725.892V322.905L459.093 785.788H470.249L672.683 309.996V736.457C670.104 765.317 654.96 774.228 627.705 780.382L626.897 780.569V786.773H836.923V780.569L836.115 780.382C808.831 774.228 793.322 765.317 790.743 736.457L790.605 298.091H790.743C790.743 261.551 806.024 251.419 836.115 244.625Z" fill="#2D3748"/>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="mr-5 text-xs shrink-0">
+                                <a class="block hover:text-slate-200" href="https://x.com/chris_chin_kh" target="_blank" rel="noreferrer noopener" aria-label="X (opens in a new tab)" title="X">
+                                    <span class="sr-only">X</span>
+                                    <svg width="22" height="22" viewBox="0 0 1200 1226" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" fill="currentColor"></path>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="mr-5 text-xs shrink-0">
+                                <a class="block hover:text-slate-200" href="https://codepen.io/kinghochin" target="_blank" rel="noreferrer noopener" aria-label="CodePen (opens in a new tab)" title="CodePen">
+                                    <span class="sr-only">CodePen</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6" aria-hidden="true">
+                                        <path d="M3.06 41.732L32 60.932l28.94-19.2V22.268L32 3.068l-28.94 19.2zm57.878 0L32 22.268 3.06 41.732m0-19.463L32 41.47l28.94-19.2M32 3.068v19.2m0 19.463v19.2" stroke-width="5"></path>
+                                    </svg>
+                                </a>
+                            </li>
+                            <li class="mr-5 text-xs shrink-0">
+                                <a class="block hover:text-slate-200" href="https://bento.me/chrischin" target="_blank" rel="noreferrer noopener" aria-label="Personal Details (opens in a new tab)" title="Personal Details">
+                                    <span class="sr-only">Personal Details</span>
+                                    <svg width="24" height="24" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" class="transparent-icon">
+                                        <defs>
+                                            <mask id="cutout">
+                                                <rect width="1024" height="1024" fill="white" />
+                                                <g fill="black">
+                                                    <!-- User icon path -->
+                                                    <path d="M512 0C229.1 0 0 229.1 0 512s229.1 512 512 512 512-229.1 512-512S794.9 0 512 0zm0 128c70.7 0 128 57.3 128 128s-57.3 128-128 128-128-57.3-128-128 57.3-128 128-128zm0 768c-119.3 0-220.7-68.5-270.6-170.7 25.1-58.4 80.4-97.5 142.4-97.5h256c62 0 117.3 39.1 142.4 97.5C732.7 827.5 630.3 896 512 896z" />
+                                                </g>
+                                            </mask>
+                                        </defs>
+                                        <rect width="1024" height="1024" rx="179.649" fill="#2D3748" mask="url(#cutout)" />
+                                        <g fill="#A0AEC0"> <!-- Gray color -->
+                                            <path d="M512 0C229.1 0 0 229.1 0 512s229.1 512 512 512 512-229.1 512-512S794.9 0 512 0zm0 128c70.7 0 128 57.3 128 128s-57.3 128-128 128-128-57.3-128-128 57.3-128 128-128zm0 768c-119.3 0-220.7-68.5-270.6-170.7 25.1-58.4 80.4-97.5 142.4-97.5h256c62 0 117.3 39.1 142.4 97.5C732.7 827.5 630.3 896 512 896z" />
+                                        </g>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Nav Items-->
+                <div class="flex justify-between items-center">
+                    <ul class="space-y-4" id="nav">
+                        <li class="mt-4"><a href="#about" class="hover:text-gray-200 nav-link about-link">About</a></li>
+                        <li><a href="#experience" class="hover:text-gray-200 nav-link">Experience</a></li>
+                        <li><a href="#publications" class="hover:text-gray-200 nav-link">Publications</a></li>
+                        <li><a href="#project-highlights" class="hover:text-gray-200 nav-link">Project Highlights</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Right Content Column -->
+        <main class="w-full p-0 overflow-y-auto bg-gray-800 text-gray-200" onscroll="highlightNav()">
+
+            <div class="p-10">
+                <section id="about" class="mt-10 mb-20 pl-4">
+                    <p>Experienced Full Stack Developer with a deep background in cloud infrastructure, backend development, and frontend engineering. With over a decade of experience delivering scalable and efficient applications across industries like FMCG and healthcare, I specialize in designing and optimizing full-stack solutions that prioritize reliability, scalability, and cost-efficiency. As a technical blogger, I focus on cloud architecture, performance optimization, and industry best practices, contributing to thought leadership in software development.</p>
+                    <p class="mt-4">My expertise includes:</p>
+                    <ul class="list-disc ml-5 mt-5">
+                        <li><strong>Languages & Frameworks:</strong> JavaScript, TypeScript, React, Node.js, Python</li>
+                        <li><strong>Tools & Technologies:</strong> AWS, Cloud Computing, Docker, PostgreSQL, Redis, Git, REST APIs, GraphQL</li>
+                        <li><strong>Design Principles:</strong> UI/UX design, responsive design, accessibility</li>
+                    </ul>
+                    <p class="mt-5">I thrive on collaboration and continuously seek to expand my knowledge in software development and emerging technologies.</p>
+                </section>
+    
+                <section id="experience" class="mt-10 mb-28">
+                    <div class="space-y-4">
+                        <!-- Job 1 -->
+                        <div class="relative p-6 bg-gray-800 rounded-lg shadow-md hover:bg-gray-700 hover:shadow-lg transition-transform duration-300 ease-out transform hover:-translate-y-2">
+                            <span class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block bg-gray-700 opacity-10"></span>
+                        
+                            <!-- Two-column layout inside the card -->
+                            <div class="job grid grid-cols-8 gap-4">
+                                <!-- Left Column: Date -->
+                                <div class="col-span-2 flex items-start text-gray-300 text-sm pt-1">
+                                    <p>Jun 2022 - Present</p>
+                                </div>
+                                
+                                <!-- Right Column: Job Details -->
+                                <div class="col-span-6 pb-5">
+                                    <h3 class="text-lg font-semibold text-white">Brand Nudge | Reading, UK</h3>
+                                    <p class="text-md font-medium text-gray-300">Full Stack Developer</p>
+                                    <p class="mt-2 text-gray-300">Developed a data analytics platform tailored to the FMCG industry, managing end-to-end responsibilities from database design, data pipeline setup, backend, to frontend development, hosted on AWS.</p>
+                                    <p class="mt-2 text-gray-300">Led cloud architecture initiatives prioritising scalability and high availability, leveraging AWS services such as EC2, S3, and Lambda.</p>
+                                    <p class="mt-2 text-gray-300">Built full-stack features using TypeScript, React, Node.js, PostgreSQL, and Redis, creating a seamless integration across the stack.</p>
+                                    <p class="mt-2 text-gray-300">Enhanced application performance by implementing efficient caching solutions, optimising cloud infrastructure, and automating deployment processes to reduce manual intervention.</p>
+                                    <!-- Skill Tags -->
+                                    <div class="skills flex flex-wrap gap-2 mt-4">
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">JavaScript</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">TypeScript</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">React</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">Node.js</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">AWS</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">PostgreSQL</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">Redis</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">Python</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Job 2 -->
+                        <div class="relative p-6 bg-gray-800 rounded-lg shadow-md hover:bg-gray-700 hover:shadow-lg transition-transform duration-300 ease-out transform hover:-translate-y-2">
+                            <span class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block bg-gray-700 opacity-10"></span>
+                        
+                            <!-- Two-column layout inside the card -->
+                            <div class="grid grid-cols-8 gap-4">
+                                <!-- Left Column: Date -->
+                                <div class="col-span-2 flex items-start text-gray-300 text-sm pt-1">
+                                    <p>Oct 2021 - Apr 2022</p>
+                                </div>
+                                
+                                <!-- Right Column: Job Details -->
+                                <div class="col-span-6 pb-5">
+                                    <h3 class="text-lg font-semibold text-white">Qmee | Reading, UK</h3>
+                                    <p class="text-md font-medium text-gray-300">Software Engineer</p>
+                                    <p class="mt-2 text-gray-300">Designed and developed a responsive survey platform for web and mobile using React and Node.js, enhancing user experience and engagement.</p>
+                                    <p class="mt-2 text-gray-300">Improved platform scalability and responsiveness by transitioning to a microservices architecture, allowing for efficient scaling and resource management.</p>
+                                    <p class="mt-2 text-gray-300">Contributed to cloud infrastructure by focusing on cost reduction strategies and optimising resource allocation to meet business requirements efficiently.</p>
+                                    <!-- Skill Tags -->
+                                    <div class="skills flex flex-wrap gap-2 mt-4">
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">JavaScript</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">React</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">Node.js</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">React Native</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">GraphQL</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">Storybook</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Job 3 -->
+                        <div class="relative p-6 bg-gray-800 rounded-lg shadow-md hover:bg-gray-700 hover:shadow-lg transition-transform duration-300 ease-out transform hover:-translate-y-2">
+                            <span class="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block bg-gray-700 opacity-10"></span>
+                        
+                            <!-- Two-column layout inside the card -->
+                            <div class="grid grid-cols-8 gap-4">
+                                <!-- Left Column: Date -->
+                                <div class="col-span-2 flex items-start text-gray-300 text-sm pt-1">
+                                    <p>Jul 2007 - Jul 2021</p>
+                                </div>
+                                
+                                <!-- Right Column: Job Details -->
+                                <div class="col-span-6 pb-5">
+                                    <h3 class="text-lg font-semibold text-white">Hospital Authority | Hong Kong</h3>
+                                    <p class="text-md font-medium text-gray-300">System Analyst / Analyst Programmer</p>
+                                    <p class="mt-2 text-gray-300">Spearheaded the migration of legacy systems to a private cloud environment, utilising OpenShift, Docker, and React to modernise infrastructure and improve reliability.</p>
+                                    <p class="mt-2 text-gray-300">Architected and developed scalable IT systems using MongoDB and Node.js to automate workflows and enhance process efficiency, resulting in significant time savings.</p>
+                                    <p class="mt-2 text-gray-300">Led a team of 5 developers through complete project lifecycles, focusing on architecture design, implementation, scalability, and cost-efficiency for healthcare applications.</p>
+                                    <p class="mt-2 text-gray-300">Achieved a 60% improvement in system performance by transitioning five enterprise applications to a scalable cloud-based architecture over two years.</p>
+                                    <!-- Skill Tags -->
+                                    <div class="skills flex flex-wrap gap-2 mt-4">
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">MongoDB</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">Node.js</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">Docker</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">OpenShift</span>
+                                        <span class="tag bg-teal-400/10 rounded-full px-3 py-1 text-xs font-medium text-teal-300">React</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+                <section id="publications" class="mb-28">
+                    <h2 class="text-3xl font-semibold mb-4">Publications</h2>
+                    <ul class="list-disc ml-5 mt-5">
+                        <li class="list-disc mt-5 mb-10">
+                            <strong>Build an Online Store in 1 Hour Using Next.js</strong><br>
+                            A step-by-step guide to building a fully functional online store quickly with Next.js, demonstrating
+                            rapid development and deployment strategies.<br>
+                            <div class="flex space-x-4 mt-2"> <!-- Added space-x-4 for spacing -->
+                                <a href="https://medium.com/javascript-in-plain-english/build-an-online-store-in-one-hour-with-next-js-bf4e52f2c594?sk=60149345aff517111eb1236ddb9295b2" target="_blank" rel="noreferrer noopener" class="text-blue-600 hover:underline">Read More</a>
+                                <a href="https://github.com/kinghochin/eshop" target="_blank" rel="noreferrer noopener" class="text-blue-600 hover:underline">Repository</a>
+                                <a href="https://eshop-in-1-hour.vercel.app/" target="_blank" rel="noreferrer noopener" class="text-blue-600 hover:underline">Demo</a>    
+                            </div>
+                        </li>
+                        <li class="list-disc mt-5 mb-10">
+                            <strong>Every Successful Data-Centric Application Must Have a Good Data Infrastructure</strong><br>
+                            The blog discusses the essential role of a well-designed data pipeline in data-centric applications, emphasizing how a robust pipeline enhances data collection, processing, and storage for improved application performance. It also provides practical guidance on using Python tools like Pandas and Apache Airflow to implement effective data pipelines, complete with code examples that illustrate best practices for data manipulation and workflow automation.<br>
+                            <div class="flex space-x-4 mt-2"> <!-- Added space-x-4 for spacing -->
+                                <a href="https://medium.com/python-in-plain-english/the-secret-behind-every-successful-data-centric-application-3947163d0307?sk=51cada77c4c769fdf7a4d58a1203b21b" target="_blank" rel="noreferrer noopener" class="text-blue-600 hover:underline">Read More</a>
+                                <a href="https://github.com/kinghochin/data-pipeline-blog-1" target="_blank" rel="noreferrer noopener" class="text-blue-600 hover:underline">Repository</a>
+                            </div>
+                        </li>
+                        <li class="list-disc mt-5 mb-10">
+                            <strong>Blog Series: Serverless vs EC2</strong><br>
+                            A series exploring the pros and cons of Serverless vs EC2, covering aspects like cost, efficiency,
+                            and reliability, with code examples.<br>
+                            <div class="flex space-x-4 mt-2"> <!-- Added space-x-4 for spacing -->
+                                <a href="https://medium.com/aws-in-plain-english/serverless-vs-ec2-reliability-and-related-factors-ffff7dfc4ecc?sk=9e60ec676691e13d8ab6a2d502652479" target="_blank" rel="noreferrer noopener" class="text-blue-600 hover:underline">Read More</a>
+                            </div>
+                        </li>
+                        <li class="list-disc mt-5 mb-10">
+                            <strong>What is the Role of a Senior Software Developer in a Company?</strong><br>
+                            Insights on how senior developers drive company growth through technical leadership and strategic
+                            alignment.<br>
+                            <div class="flex space-x-4 mt-2"> <!-- Added space-x-4 for spacing -->
+                                <a href="https://medium.com/venturehq/what-is-the-role-of-a-senior-software-developer-in-a-company-4ab6488da009" target="_blank" rel="noreferrer noopener" class="text-blue-600 hover:underline">Read More</a>
+                            </div>
+                        </li>
+                        <li class="list-disc mt-5 mb-10">
+                            <strong>Real-Life Application of Redis Task Queue and Caching Middleware</strong><br>
+                            Detailed look at using Redis for optimized backend processes and caching, improving application
+                            performance.<br>
+                            <div class="flex space-x-4 mt-2"> <!-- Added space-x-4 for spacing -->
+                                <a href="https://medium.com/devops-dev/real-live-application-of-redis-task-queue-and-caching-middleware-5e7e0b818a4d?sk=2c0ca0e2f56739df5f3607e55b6c47fd" target="_blank" rel="noreferrer noopener" class="text-blue-600 hover:underline">Read More</a>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+                
+                <section id="project-highlights" class="mb-6 extra-space">
+                    <h2 class="text-2xl font-bold mb-4">Project Highlights</h2>
+                    <ul class="list-disc ml-5 mt-5">
+                        <li class="list-disc mt-5 mb-10">
+                            <strong>Scalable ETL Pipeline with Serverless Architecture</strong><br>
+                            Built an ETL pipeline using AWS EC2, Lambda, S3, and Postgre to handle large data ingestion
+                            efficiently. Designed the system to process and transform data within serverless functions,
+                            significantly reducing costs by shutting down processing units quickly after completion.
+                        </li>
+                        <li class="list-disc mt-5 mb-10">
+                            <strong>Image Processing Workflow Using Serverless</strong><br>
+                            Developed a serverless function that downloads images, performs transformations, and uploads
+                            them to an S3 bucket. This architecture allowed for on-demand scalability and eliminated
+                            the need for persistent servers, improving both cost-efficiency and reliability.
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script>
+        // Get all sections and nav links
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const aboutLinks = document.querySelectorAll('.about-link');
+        const wideNavBar = document.getElementById('wide-navbar');
+        const narrowNavBar = document.getElementById('narrow-navbar');
+
+        aboutLinks.forEach(aboutLink => {
+            aboutLink.classList.add('active', 'nav-link-active');
+        })
+        updateNavLinksVisibility();
+
+        const mouseCircle = document.querySelector('.mouse-circle');
+
+        document.addEventListener('mousemove', (e) => {
+            mouseCircle.style.left = `${e.pageX}px`;
+            mouseCircle.style.top = `${e.pageY}px`;
+        });
+
+        function highlightNav() {
+            sections.forEach(section => {
+                if (section.getBoundingClientRect().top - sections[0].offsetTop <= 0) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('active', 'nav-link-active'); // Remove both classes
+                        if (link.getAttribute('href').substring(1) === section.id) {
+                            link.classList.add('active', 'nav-link-active'); // Add both classes for active state
+                        }
+                    });
+                }
+            });
+            updateNavLinksVisibility();
+        }
+
+        function updateNavLinksVisibility() {
+            const isMediumScreen = window.matchMedia('(min-width: 768px)').matches;
+
+            navLinks.forEach(link => {
+                // Show all links on medium screens and larger
+                if (isMediumScreen) {
+                    link.classList.remove('hidden');
+                    wideNavBar.classList.remove('hidden');
+                    narrowNavBar.classList.add('hidden');
+                } else {
+                    // Hide all links except the active one on smaller screens
+                    wideNavBar.classList.add('hidden');
+                    narrowNavBar.classList.remove('hidden');
+                    link.classList.add('hidden');
+                    if (link.classList.contains('active')) {
+                        link.classList.remove('hidden');
+                    }
+                }
+            });
+        }
+
+        window.addEventListener("resize", updateNavLinksVisibility);
+
+
+        // Smooth scroll behavior for navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+    </script>
+</body>
+</html>
